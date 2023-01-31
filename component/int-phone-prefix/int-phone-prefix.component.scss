@@ -1,0 +1,211 @@
+.country-name {
+  margin-left: 8px;
+  line-height: 1.2;
+}
+
+.dial-code {
+  color: #999;
+}
+.flag{
+  display: none !important;
+  width: 10px;
+}
+.scrollable-menu {
+  height: auto;
+  max-height: 200px;
+  width: max-content;
+  overflow: auto;
+  // overflow-x: hidden;
+}
+.flagInput {
+  // padding: 0 !important;
+  padding: 0 28px 0 0 !important;
+  background: #a7a4a41f !important;
+}
+
+.input-group-addon {
+  text-align: left;
+  background-color: #fff;
+  color: black;
+  max-width:36px;
+}
+
+.input-group{
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.btn-flag {
+  border-color: white;
+}
+
+// .btn:hover, .btn:focus{
+//   background-color: white;
+//   width:15px;
+// }
+
+.defaultCountry {
+  background:url('http://www.geonames.org/flags/x/fr.gif') no-repeat;
+  display:inline-block;
+  width:15px;
+  height:15px;
+}
+
+.list-group {
+  margin-bottom: 0;
+}
+
+
+/* Dropdown Button */
+.dropbtn {
+  background-color: cadetblue;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.flag-scroll-img{
+  height: 22px;
+  width: 30px;
+  padding-left: 5px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  min-width: initial;
+  margin-top: 7px;
+  max-width: 32px;
+  &:hover
+
+  {
+    .dropdown-content {
+      display: none;
+    }
+  }
+  .dropdown-content.show {
+    display: block;
+    }
+}
+
+.dropdown-content {
+  position: relative;
+ max-width: 50px;
+ display: none;
+  // background-color: #f9f9f9;
+  min-width: 25px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1000;
+  left: -0.5px;
+    top: 4px;
+    // border: none;
+  a {
+    color: black !important;
+    padding: 7px 16px 6px 7px;
+    text-decoration: none;
+    display: block;
+    &:hover
+    {
+      color: white !important;
+      text-decoration: none;
+    }
+  }
+  .list-group.scrollable-menu
+  {
+    max-width: 240px;
+    &::-webkit-scrollbar
+    {
+    width: 5px;
+    height: 5px;
+    }
+    &::-webkit-scrollbar-track
+    {
+      width: 5px;
+      background-color: rgb(255, 255, 255);
+
+    }
+    &::-webkit-scrollbar-thumb
+    {
+      background-color: grey;
+    }
+  }
+  .flag-scroll-img{
+    height: 22px;
+    width: 30px;
+  }
+}
+.list-group-item
+{
+  padding: 6px 4px 6px 0px;
+  display: flex;
+  align-items: center;
+}
+.errorsShow {
+  border: 1px solid red !important;
+}
+
+
+.country-dial-code{
+  background-color: white;
+  display: flex;
+  align-items: center;
+  color: black;
+  height: 38.7px;
+  padding-left: 1px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  float: left;
+  min-width: 45px;
+  max-width: 55px;
+  text-align: right;
+  line-height: normal;
+  justify-content: right;
+  font-size: 14px;
+    &.mrv-pn-input
+    {
+      // padding: 7px;
+      height: 31px;
+      border: none;
+    box-shadow: none;
+      
+    }
+}
+
+.country-phone-number{
+  border: none;
+  padding-left: 8px;
+  // width: calc(100% - 57px);
+  width: calc(100% - 45px);
+  height: 38.7px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom-right-radius: 5px !important;
+  border-top-right-radius: 5px !important;
+  &.mrv-pn-input
+  {
+    height: 31px;
+    border: none;
+    border-right: none;
+    box-shadow: none;
+    
+  }
+  // float: right;
+  &:focus
+  {
+    box-shadow: none;
+  }
+}
+.input-group-addon.mrv-pn-input
+{
+  border: none;
+}
+
+.errorsShow {
+  .input-group-addon,
+  .country-dial-code,
+  .country-phone-number
+
+{
+border: none;
+}
+}

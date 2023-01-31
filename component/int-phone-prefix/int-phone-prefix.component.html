@@ -1,0 +1,54 @@
+
+<div class="input-group flex-item" [ngClass]="errorShow ? 'errorsShow' : '' " id="int-phone-data" [ngStyle]="{'border' : component == 'Row' ? 'none' : ''}">
+  <span class="input-group-addon flagInput" (click)="disabled ? '' : showDropDown(index)" (clickOutside)="incrementClickOutsideCount()" *ngIf="!disabled" [ngClass]="component=='Column'?'mrv-pn-input': ''">
+    <div [ngClass]="showDropdown ? 'dropdown' : ''" [ngStyle]="{'margin-top':(component=='Column' && showDropdown)?'4.5px':''}">
+     
+      <div>
+        <img  [src]="activeImage" class="flag-scroll-img" title="{{titleValue(selectedCountry?.countryCode)}}">
+        <span [class]="'flag flag-' + selectedCountry.countryCode" *ngIf="selectedCountry"></span>
+        <span class="flag flag-{{defaultCountry}}" *ngIf="!selectedCountry"></span>
+      </div>
+      <div [ngClass]="showDropdown ? 'dropdown-content show' : 'dropdown-content'">
+        <div class="list-group scrollable-menu" style="max-width: unset !important;" [ngStyle]="{'width': inputWidthR()  + 'px'}"> 
+          <input class="form-control" type="text" autofocus placeholder="Search" name="phoneNumberFilter" [id]="'phoneNumberFilter' + (index == undefined ? '' : index)" (click)="stopClick($event)" [(ngModel)]="phoneFilter">
+        </div>
+        <div class="list-group scrollable-menu" [ngStyle]="{'width': inputWidthR() + 'px'}" style="max-width: unset !important;">
+          <div class="list-group-item" *ngFor="let country of topCountries | filter:phoneFilter"
+            (click)="updateSelectedCountry($event, country.countryCode, country)">
+            <img [src]="country?.flagImg" class="flag-scroll-img">
+            <span class="country-name">{{ country.name }} <span class="dial-code">+ {{ country.dialCode}}</span></span>
+          </div>
+          <div class="list-group-item" *ngFor="let country of countries | filter:phoneFilter"
+            (click)="updateSelectedCountry($event, country.countryCode, country)">
+            <img [src]="country?.flagImg" class="flag-scroll-img">
+            <span class="country-name">{{ country.name }} <span class="dial-code">+ {{ country.dialCode}}</span></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </span>
+  <div class="d-flex">
+    <span class="country-dial-code"  [ngStyle]="{'background-color': disabled ? '#eee' : '' , 'pointer-events' : disabled ? 'none' : '',  'padding':component=='Column'?'0px':''}" [ngClass]="component=='Column'?'mrv-pn-input': ''">+{{activeDialCode}}</span>
+  <input  *ngIf="selectedCountry?.countryCode != 'US' && selectedCountry?.countryCode != 'CA'"
+         class="form-control country-phone-number"
+         placeholder="{{placeholder}}"
+         [maxlength]="maxLength"
+         [ngStyle]="{'background-color': disabled ? '#eee' : '' , 'pointer-events' : disabled ? 'none' : ''}"
+         [(ngModel)]="phoneInput"
+         [value]="changeValue(phoneInput)"
+         (input)="onPressInput()"
+         (blur)="onBlur()"
+         name="phoneInputs"
+         
+         (keypress)="AcceptsNumbers($event)"
+         (ngModelChange)="updatePhone()"
+         [ngClass]="component=='Column'?'mrv-pn-input': ''">
+   
+  </div>
+
+  <form [formGroup]="form" *ngIf="selectedCountry?.countryCode == 'US' || selectedCountry?.countryCode == 'CA'">
+    <input class="form-control country-phone-number" [placeholder]="placeholder" (onValEvent)="getValFromPhoneMask($event)" (keypress)="onKeypressEvent()"  (blur)="onBlur()"
+    [ngStyle]="{'background-color': disabled ? '#eee' : '', 'pointer-events' : disabled ? 'none' : ''}" [(ngModel)]="phoneInput" appPhoneMask (ngModelChange)="updatePhone()" formControlName="phoneValue" [ngClass]="component=='Column'?'mrv-pn-input': ''"/>
+  </form>
+</div>
